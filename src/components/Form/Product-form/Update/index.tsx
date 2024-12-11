@@ -1,24 +1,9 @@
 "use client";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { appendErrors, Controller, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { any, string, z } from "zod";
+import { z } from "zod";
 import { productApi } from "@/api/productApi";
-import CheckboxFive from "@/components/FormElements/Checkboxes/CheckboxFive";
-import CheckboxFour from "@/components/FormElements/Checkboxes/CheckboxFour";
-import CheckboxOne from "@/components/FormElements/Checkboxes/CheckboxOne";
-import CheckboxThree from "@/components/FormElements/Checkboxes/CheckboxThree";
-import CheckboxTwo from "@/components/FormElements/Checkboxes/CheckboxTwo";
-import SwitcherFour from "@/components/FormElements/Switchers/SwitcherFour";
-import SwitcherOne from "@/components/FormElements/Switchers/SwitcherOne";
-import SwitcherThree from "@/components/FormElements/Switchers/SwitcherThree";
-import SwitcherTwo from "@/components/FormElements/Switchers/SwitcherTwo";
-import DatePickerTwo from "@/components/FormElements/DatePicker/DatePickerTwo";
-import DatePickerOne from "@/components/FormElements/DatePicker/DatePickerOne";
-import MultiSelect from "@/components/FormElements/MultiSelect";
-import SelectGroupTwo from "@/components/FormElements/SelectGroup/SelectGroupTwo";
-import { useEffect, useState } from "react";
-import { log } from "console";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import SelectDefaultDropdown from "@/components/FormElements/SelectGroup/SelectDefaultDropdown";
@@ -101,6 +86,8 @@ const ProductForm = ({
   const productCategory = getProduct.category;
   const productSubCategory = getProduct.subCategory;
   const productBrand = getProduct.brand;
+
+console.log('1',productCategory,'2',productSubCategory,'3',productBrand)
 
   const {
     register,
@@ -208,17 +195,6 @@ const ProductForm = ({
                     </p>
                   )}
                 </div>
-                {/* <div>
-                <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-                Disabled label
-                </label>
-                <input
-                type="text"
-                placeholder="Disabled label"
-                disabled
-                className="w-full rounded-[7px] border-[1.5px] border-stroke bg-transparent px-5 py-3 text-dark outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary dark:disabled:bg-dark"
-                />
-                </div> */}
                 <div className="grid grid-cols-3 gap-3">
                   <SelectDefaultDropdown
                     defaultValue={productBrand}
@@ -242,12 +218,12 @@ const ProductForm = ({
                 <div>
                   <DropzoneWrapper>
                     <Typography
-                      variant="text-body-sm"
+                      // variant="text-body-sm"
                       fontWeight={500}
                       color="textPrimary"
                       sx={{ mb: 2.5 }}
                     >
-                      Category Image
+                      Product Image
                       {!!errors.productImage && (
                         <span style={{ color: "red", fontSize: "14px" ,position:'absolute',right:'65px'}}>
                           Invalid Image format {!!errors.productImage}
@@ -269,14 +245,6 @@ const ProductForm = ({
                       )}
                     />
                   </DropzoneWrapper>
-                  {/* <label className="mb-3 block text-body-sm font-medium text-dark dark:text-white">
-                    Product Image
-                  </label>
-                  <input
-                    {...register("productImage")}
-                    type="file"
-                    className="w-full cursor-pointer rounded-[7px] border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-[#E2E8F0] file:px-6.5 file:py-[13px] file:text-body-sm file:font-medium file:text-dark-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-dark dark:border-dark-3 dark:bg-dark-2 dark:file:border-dark-3 dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
-                  /> */}
                 </div>
                 <button
                   className="h-10 w-[10%] items-start rounded-lg bg-black text-white dark:bg-white dark:text-black"
