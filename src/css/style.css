@@ -19,6 +19,10 @@
         display: none;
     }
 
+    /* .z-1 {
+        z-index: 1;
+      } */
+
     .no-scrollbar {
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
